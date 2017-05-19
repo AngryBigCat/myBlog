@@ -5,48 +5,85 @@
 // Variables
 @import "variables";
 
+//自定义变量
+@import "custom";
+
 // Bootstrap
 @import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
 
-$navbar-font: #E5E9F2;
-$navbar-color: #20A0FF;
 
-.navbar {
-    margin-bottom: 100px;
+.fade-enter-active, .fade-leave-active {
+    transition: opacity .5s
+}
+.fade-enter, .fade-leave-active {
+    opacity: 0
 }
 
-.navbar-default {
-    border-radius: 0;
-    border: 0;
-    .nav {
-        color: #fff;
-    }
+.slide-fade-enter-active {
+    transition: all .3s ease;
 }
-.navbar-inverse {
-    background: $navbar-color;
-    .navbar-nav {
-        li {
-            a {
-                color: $navbar-font;
-                outline: none;
-                cursor: pointer;
-                &:hover {
-                    color: #fff;
-                }
-            }
-        }
+.slide-fade-leave-active {
+    transition: all .3s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+}
+.slide-fade-enter, .slide-fade-leave-active {
+    transform: translateX(10px);
+    opacity: 0;
+}
+
+.dropdown-menu {
+    padding: 0;
+    li a {
+        text-align: center;
+        padding: 5px 0;
     }
-    .navbar-brand {
-        color: $navbar-font;
-        font-weight: bold;
+    li a.btn {
+        border-radius: 0;
+        color: white;
         &:hover {
-            color: #fff;
+            background: red;
         }
     }
 }
 
 
 
+.statuses {
+    li {
+        border-bottom: 1px solid #e1e1e1;
+        padding-bottom: 20px;
+    }
+}
+
+.statuses-post {
+    margin-bottom: 50px;
+    form textarea {
+        margin-bottom: 10px;
+        resize: none;
+    }
+}
+
+
+
+
+
+
+
+
+.users {
+    list-style: none;
+    margin: 0;
+    padding-left: 0;
+    li {
+        overflow: auto;
+        padding: 10px 0;
+        border-bottom: 1px solid $gray-lighter;
+    }
+}
+.delete-btn {
+    float: right;
+    position: relative;
+    right: 0;
+}
 
 
 .user_info {
@@ -54,9 +91,10 @@ $navbar-color: #20A0FF;
     margin-top: 20px;
     margin-bottom: 20px;
 }
-.gravatar {
-    border-radius: 50%;
-    max-width: 70px;
+
+.gravatar-box {
+    text-align: center;
+    margin-top: 20px;
 }
 
 .footer {

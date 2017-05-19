@@ -13,8 +13,10 @@
         </section>
         @include('layouts._footer')
 
+        @if (!Auth::user())
         @include('shared.signup')
         @include('shared.signin')
+        @endif
         <script type="text/javascript" src="/js/app.js"></script>
     </body>
 </html>

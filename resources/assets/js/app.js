@@ -16,8 +16,8 @@ window.Vue = require('vue');
  */
 
 Vue.component('example', require('./components/Example.vue'));
-Vue.component('signup', require('./components/signup.vue'));
 
+//<edit-self edit-href="{{ route('users.update') }}"></edif-self>
 
 new Vue({
     el: '#signup',
@@ -29,7 +29,6 @@ new Vue({
     },
     methods: {
         onSignupSubmit(event) {
-            console.log(this.$data);
         }
     }
 });
@@ -42,7 +41,39 @@ new Vue({
     },
     methods: {
         onSigninSubmit(event) {
-            console.log(this.$data);
+
+        }
+    }
+});
+
+new Vue({
+    el: '#all-user-list',
+    data: {
+        message: '删除成功',
+        seen: false
+    },
+    mounted() {
+
+    },
+    methods: {
+        onDeleteUser(delURL, event) {
+            let li = event.toElement.parentElement;
+            axios.delete(delURL).then((res) => {
+                $(li).remove();
+                this.message = res.data + ' 已删除';
+                this.seen = true;
+                setTimeout(() => {
+                    this.seen = false;
+                }, 1000);
+            });
         }
     }
 })
+
+
+$('.signout').click(function (event) {
+    event.preventDefault();
+    axios.delete(event.target.href).then(function (response) {
+        location.href = '/';
+    });
+});

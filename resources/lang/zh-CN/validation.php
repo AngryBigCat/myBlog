@@ -103,6 +103,9 @@ return [
         'attribute-name' => [
             'rule-name' => 'custom-message',
         ],
+        'password' => [
+            'min_pass' => ':attribute 不能小于 6 位'
+        ]
     ],
 
     /*

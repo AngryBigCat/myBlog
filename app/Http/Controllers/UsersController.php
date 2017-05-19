@@ -7,10 +7,27 @@ use Illuminate\Http\Request;
 
 class UsersController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('checkLogin', [
+            'only' => ['edit', 'update', 'destroy']
+        ]);
+    }
+
+    public function index()
+    {
+        $users = User::paginate(10);
+        return view('users.index', compact('users'));
+    }
+
     public function show($id)
     {
         $user = User::findOrFail($id);
-        return view('users.show', compact('user'));
+        $statuses = $user->statuses()
+            ->orderBy('created_at', 'desc')
+            ->paginate(30);
+        return view('users.show', compact('user', 'statuses'));
     }
 
     public function store(Request $request)
@@ -30,5 +47,40 @@ class UsersController extends Controller
         Auth::login($user);
         session()->flash('success', '欢迎，您将在这里开启一段新的旅程~');
         return redirect()->route('users.show', [$user]);
+    }
+
+    public function edit($id)
+    {
+        $user = User::findOrFail($id);
+        $this->authorize('update', $user);
+        return view('users.edit', compact('user'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        $this->validate($request, [
+            'name' => 'required|max:50',
+            'password' => 'confirmed|min_pass:6'
+        ]);
+
+        $user = User::findOrFail($id);
+        $this->authorize('update', $user);
+
+        $data = [];
+        $data['name'] = $request->name;
+        if ($request->password) {
+            $data['password'] = bcrypt($request->password);
+        }
+
+        $user->update($data);
+        session()->flash('success', '个人资料更新成功！');
+        return redirect()->route('users.show', $id);
+    }
+
+    public function destroy($id)
+    {
+        $user = User::findOrFail($id);
+        $user->delete();
+        return $user->name;
     }
 }

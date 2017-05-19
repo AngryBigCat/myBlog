@@ -20,3 +20,10 @@ Route::resource('users', 'UsersController', ['except' => ['create']]);
 
 Route::post('/signin', 'SessionsController@store')->name('signin');
 Route::delete('/signout', 'SessionsController@destroy')->name('signout');
+
+Route::get('password/email', 'Auth\ResetPasswordController@getEmail')->name('password.reset');
+Route::post('password/email', 'Auth\ResetPasswordController@postEmail')->name('password.reset');
+Route::get('password/reset/{token}', 'Auth\ResetPasswordController@getReset')->name('password.edit');
+Route::post('password/reset', 'Auth\ResetPasswordController@postReset')->name('password.update');
+
+Route::resource('statuses', 'StatusesController');

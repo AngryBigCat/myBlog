@@ -12,13 +12,27 @@
 */
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
-$factory->define(App\User::class, function (Faker\Generator $faker) {
+$factory->define(App\Models\User::class, function (Faker\Generator $faker) {
     static $password;
+    $date_time = $faker->date . ' ' . $faker->time;
 
     return [
         'name' => $faker->name,
         'email' => $faker->unique()->safeEmail,
+        'is_admin' => false,
+        'activated' => true,
         'password' => $password ?: $password = bcrypt('secret'),
         'remember_token' => str_random(10),
+        'created_at' => $date_time,
+        'updated_at' => $date_time,
+    ];
+});
+
+$factory->define(App\Models\Status::class, function (Faker\Generator $faker) {
+    $date_time = $faker->date . ' ' . $faker->time;
+    return [
+        'content'    => $faker->text(),
+        'created_at' => $date_time,
+        'updated_at' => $date_time,
     ];
 });

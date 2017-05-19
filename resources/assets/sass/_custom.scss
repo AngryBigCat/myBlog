@@ -1,0 +1,29 @@
+
+$brand-primary: #20A0FF;
+$brand-success: #13CE66;
+$brand-warning: #F7BA2A;
+$brand-danger: #FF4949;
+$brand-info: #58B7FF;
+
+
+$navbar-border-radius:             		   	none;
+
+$navbar-default-color: 						#fff;
+$navbar-default-bg: 						#20A0FF;
+$navbar-default-border: 					none;
+
+// Navbar links
+$navbar-default-link-color:                #E5E9F2;
+$navbar-default-link-hover-color:          #fff;
+$navbar-default-link-hover-bg:             transparent;
+$navbar-default-link-active-color:         #fff;
+$navbar-default-link-active-bg:            darken($navbar-default-bg, 6.5%);
+
+// Navbar brand label
+$navbar-default-brand-color:               $navbar-default-link-color;
+$navbar-default-brand-hover-color:         $navbar-default-link-hover-color;
+
+// Navbar toggle
+$navbar-default-toggle-hover-bg:           $navbar-default-link-active-bg;
+$navbar-default-toggle-icon-bar-bg:        white !default;
+$navbar-default-toggle-border-color:       white !default;
