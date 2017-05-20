@@ -70,6 +70,25 @@ new Vue({
     }
 })
 
+new Vue({
+    el: '#statuses-box',
+    methods: {
+        onAppearButtonOver(event) {
+            $(event.currentTarget).find('button').show();
+        },
+        onAppearButtonOut(event) {
+            $(event.currentTarget).find('button').hide();
+        },
+        onDeleteStatus(deleteUrl, event) {
+            axios.delete(deleteUrl).then(function (res) {
+                let li = event.target.parentNode;
+                li.parentNode.removeChild(li);
+            });
+        }
+    }
+});
+
+
 
 $('.signout').click(function (event) {
     event.preventDefault();

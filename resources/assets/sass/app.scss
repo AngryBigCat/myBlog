@@ -30,6 +30,15 @@
     opacity: 0;
 }
 
+
+.list-enter-active, .list-leave-active {
+    transition: all 1s;
+}
+.list-enter, .list-leave-active {
+    opacity: 0;
+    transform: translateX(30px);
+}
+
 .dropdown-menu {
     padding: 0;
     li a {
@@ -47,25 +56,68 @@
 
 
 
-.statuses {
-    li {
-        border-bottom: 1px solid #e1e1e1;
-        padding-bottom: 20px;
-    }
-}
-
 .statuses-post {
     margin-bottom: 50px;
     form textarea {
         margin-bottom: 10px;
         resize: none;
+        height: 150px;
+    }
+}
+
+.statuses-box, .statuses {
+    padding-left: 0;
+    margin-bottom: 30px;
+    li {
+        margin-top: 0;
+        padding: 0px 10px 20px;
+        border-bottom: 1px solid #ddd;
+        position: relative;
+        transition: all 1s ease;
+        &:hover {
+            background: #fefefe;
+        }
+        button {
+            display: none;
+            position: absolute;
+            right: 5px;
+            top: 5px;
+        }
     }
 }
 
 
 
-
-
+.stats {
+    overflow: auto;
+    margin-top: 0;
+    padding: 0;
+    a {
+        float: left;
+        padding: 0 10px;
+        text-align: center;
+        width: 33%;
+        border-left: 1px solid $gray-lighter;
+        color: gray;
+        &:first-child {
+            padding-left: 0;
+            border: 0;
+        }
+        &:hover {
+            text-decoration: none;
+            color: #337ab7;
+        }
+    }
+    strong {
+        display: block;
+        font-size: 1.2em;
+        color: black;
+    }
+}
+#follow_form {
+    display: block;
+    margin: 20px 0;
+}
 
 
 
@@ -88,14 +140,8 @@
 
 .user_info {
     text-align: center;
-    margin-top: 20px;
-    margin-bottom: 20px;
 }
 
-.gravatar-box {
-    text-align: center;
-    margin-top: 20px;
-}
 
 .footer {
     color: #8492A6;

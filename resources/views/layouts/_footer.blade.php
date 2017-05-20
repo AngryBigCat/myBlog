@@ -1,4 +1,5 @@
 <footer class="footer">
+    <hr>
     <ul class="list-inline">
         <li><a href="http://d.laravel-china.org/docs/5.4">Laravel文档</a></li>
         <li><a href="https://news.laravel-china.org">Laravel资讯</a></li>

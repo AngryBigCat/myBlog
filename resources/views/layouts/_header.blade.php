@@ -12,7 +12,7 @@
             <div class="collapse navbar-collapse" id="navbar-collapse">
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="{{ route('help') }}">帮助</a></li>
-                    <li><a href="{{ route('statuses.index') }}">聊天</a></li>
+                    <li><a href="{{ route('statuses.index') }}">说说</a></li>
                     @if (Auth::check())
                         <li><a href="{{ route('users.index') }}">用户列表</a></li>
                         <li class="dropdown">
